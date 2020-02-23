@@ -1,0 +1,19 @@
+{
+  "name": "notes-app",
+  "version": "1.0.0",
+  "description": "A note making app based on node.js",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "notes",
+    "node.js"
+  ],
+  "author": "Abdul Samea",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/abdulsamea/notes-app/issues"
+  },
+  "homepage": "https://github.com/abdulsamea/notes-app#readme"
+}
