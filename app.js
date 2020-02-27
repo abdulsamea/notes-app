@@ -1,21 +1,11 @@
 const notes = require('./notes.js')
 const validator = require('validator')
-const chalk = require('chalk')
 const yargs = require('yargs')
 const fs = require('fs')
-const path = require('path')
-
-
-
-
-
-const successMsg = chalk.rgb(255,127,80).bold('Success for Sam on the way!')
-
 const title = yargs.argv.title
 var body = yargs.argv.body
 
-console.log(successMsg)
-console.log(validator.isEmail('abdul@fl.com'))
+// console.log(validator.isEmail('abdul@fl.com'))
 
 // add a note command
 yargs.command({
@@ -33,7 +23,8 @@ yargs.command({
             type:'string'
         }
     },
-    handler: function(){
+    //below format for arro function als works
+    handler () {
         notes.addNote(title, body);
     }
 })
@@ -50,13 +41,8 @@ yargs.command({
             type:'string'
         }
     },
-    handler: function(){
-        console.log('removing a note...');
-        if(title != undefined){
-            fs.unlink(title + '.txt', function(){
-                console.log(title + ' deleted by nodejs')
-            });
-    }
+    handler: () => {
+        notes.removeNote(title);
     }
 })
 
@@ -64,15 +50,8 @@ yargs.command({
 yargs.command({
     command : 'list',
     describe: 'Listing out all notes in this app',
-    handler: function(){
-        console.log('All notes present are:');
-        fs.readdir('./', (err, files) => {
-            files.forEach(file => {
-                if(path.extname(file) == '.txt' ){
-                    console.log(file);
-                }
-            });
-          });
+    handler: () => {
+        notes.listNotes();
     }
 })
 
@@ -87,7 +66,7 @@ yargs.command({
             type:'string'
         }
     },
-    handler: function(){
+    handler: () => {
     notes.getNotes(title);
     }
 })
